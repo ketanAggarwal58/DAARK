@@ -1,0 +1,2 @@
+server = new ServerSocket(8888);
+System.out.println(server.getInetAddress().getLocalHost());

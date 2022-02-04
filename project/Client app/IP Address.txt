@@ -1,0 +1,1 @@
+iPAddress = JOptionPane.showInputDialog("Enter Server IpAddress");

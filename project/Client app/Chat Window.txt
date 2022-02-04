@@ -1,0 +1,80 @@
+public JavaClient() {
+        super("Java Client");
+        setBounds(0, 0, 407, 495);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLayout(null);
+ 
+        msgRec.setEditable(false);
+        msgRec.setBackground(Color.BLACK);
+        msgRec.setForeground(Color.WHITE);
+        msgRec.addFocusListener(this);
+        msgRec.setText("");
+ 
+        msgRec.setWrapStyleWord(true);
+        msgRec.setLineWrap(true);
+ 
+        pane2 = new JScrollPane(msgRec);
+        pane2.setBounds(0, 0, 400, 200);
+        pane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        add(pane2);
+ 
+        msgSend.setBackground(Color.LIGHT_GRAY);
+        msgSend.setForeground(Color.BLACK);
+        msgSend.setLineWrap(true);
+        msgSend.setWrapStyleWord(true);
+ 
+        msgSend.setText("Write Message here");
+        msgSend.addFocusListener(this);
+        msgSend.addKeyListener(this);
+ 
+        pane1 = new JScrollPane(msgSend);
+        pane1.setBounds(0, 200, 400, 200);
+        pane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        add(pane1);
+ 
+        send.setBounds(0, 400, 400, 40);
+        add(send);
+        send.addActionListener(this);
+ 
+        bar.add(messanger);
+        messanger.add(logOut);
+        logOut.addActionListener(this);
+ 
+        bar.add(help);
+        help.add(s_keys);
+        s_keys.addActionListener(this);
+        help.add(about);
+        about.addActionListener(this);
+ 
+        setJMenuBar(bar);
+ 
+        addWindowFocusListener(new WindowFocusListener() {
+            @Override
+            public void windowGainedFocus(WindowEvent e) {
+ 
+                if (!msgRec.getText().equals("")) {
+                    System.out.println("Yes Focus");
+ 
+                    writer.println("\t<<<" + userName + ": Focusing to Comunication>>>");
+                    writer.flush();
+ 
+                }
+            }
+ 
+            @Override
+            public void windowLostFocus(WindowEvent e) {
+                if (!msgRec.getText().equals("")) {
+                    writer.println("\t<<<" + userName + ": Ignoring to Comunication>>>");
+                    writer.flush();
+                }
+            }
+ 
+        });
+ 
+        if ((userName) != null) {
+            setVisible(true);
+        } else {
+            System.exit(0);
+        }
+    }

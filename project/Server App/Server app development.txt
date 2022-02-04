@@ -1,0 +1,1 @@
+userName = JOptionPane.showInputDialog("User Name (Server)");
