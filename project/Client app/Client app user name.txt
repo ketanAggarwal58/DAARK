@@ -1,1 +1,0 @@
-userName = JOptionPane.showInputDialog("User Name (Client)");
